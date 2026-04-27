@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Neel Infratech – Smart Real Estate Investments | Nagpur</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  :root {
+    --blue: #2563EB;
+    --blue-dark: #1D4ED8;
+    --blue-light: #EFF6FF;
+    --blue-mid: #DBEAFE;
+    --green: #16A34A;
+    --green-light: #F0FDF4;
+    --slate: #F1F5F9;
+    --slate-mid: #E2E8F0;
+    --text: #0F172A;
+    --text-mid: #334155;
+    --text-soft: #64748B;
+    --text-muted: #94A3B8;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow: 0 4px 16px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #fff;
+    color: var(--text);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .display { font-family: 'DM Serif Display', serif; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #f8fafc; }
+  ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 4px; }
+
+  /* Navbar */
+  #navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
+  }
+  #navbar.scrolled { box-shadow: var(--shadow); }
+
+  /* Mobile menu */
+  #mobile-nav { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  #mobile-nav.open { max-height: 400px; }
+
+  /* Buttons */
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 600; font-size: 0.875rem;
+    padding: 11px 24px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    border: 1.5px solid var(--blue);
+    letter-spacing: -0.01em;
+  }
+  .btn-primary:hover { background: var(--blue-dark); border-color: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(37,99,235,0.3); }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: transparent;
+    color: var(--blue);
+    font-weight: 600; font-size: 0.875rem;
+    padding: 10px 24px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    border: 1.5px solid var(--blue);
+  }
+  .btn-outline:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+  .btn-white {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #fff;
+    color: var(--blue);
+    font-weight: 600; font-size: 0.875rem;
+    padding: 11px 24px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    border: 1.5px solid rgba(255,255,255,0.3);
+  }
+  .btn-white:hover { background: var(--blue-light); }
+
+  /* Chip / badge */
+  .chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: var(--blue-light);
+    color: var(--blue);
+    border: 1px solid var(--blue-mid);
+  }
+  .chip-green {
+    background: var(--green-light); color: var(--green);
+    border-color: #BBF7D0;
+  }
+
+  /* Section label */
+  .section-tag {
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blue);
+  }
+  .tag-bar {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 5px 14px 5px 5px;
+    border-radius: 100px;
+    background: var(--blue-light);
+    border: 1px solid var(--blue-mid);
+  }
+  .tag-dot {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Stats */
+  .stat-item {
+    padding: 24px 32px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+  .stat-item:last-child { border-right: none; }
+
+  /* Project cards */
+  .project-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .project-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--blue-mid); }
+  .project-card img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.5s ease; }
+  .project-card:hover img { transform: scale(1.04); }
+
+  /* Amenity icon cards */
+  .amenity-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: all 0.25s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .amenity-card:hover { box-shadow: var(--shadow); border-color: var(--blue-mid); transform: translateY(-3px); }
+  .amenity-icon {
+    width: 52px; height: 52px;
+    background: var(--blue-light);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px;
+    font-size: 1.25rem;
+    color: var(--blue);
+    transition: all 0.25s;
+  }
+  .amenity-card:hover .amenity-icon { background: var(--blue); color: #fff; }
+
+  /* Director cards */
+  .director-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .director-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: #BFDBFE; }
+  .director-card img {
+    width: 100%; height: 220px;
+    object-fit: cover; object-position: top;
+    transition: transform 0.4s;
+  }
+  .director-card:hover img { transform: scale(1.05); }
+
+  /* Why card */
+  .why-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 24px;
+    transition: all 0.25s;
+    box-shadow: var(--shadow-sm);
+  }
+  .why-card:hover { box-shadow: var(--shadow); border-color: var(--blue-mid); }
+
+  /* Testimonial */
+  .testimonial-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+  }
+  .testimonial-card:hover { box-shadow: var(--shadow); border-color: var(--blue-mid); }
+
+  /* Location bullet */
+  .loc-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #fff;
+    transition: all 0.2s;
+  }
+  .loc-item:hover { border-color: var(--blue-mid); background: var(--blue-light); }
+
+  /* Form */
+  .form-input {
+    width: 100%;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+  .form-input::placeholder { color: var(--text-muted); }
+
+  /* Gallery */
+  .gallery-item { overflow: hidden; border-radius: 12px; border: 1px solid var(--border); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
+  .gallery-item:hover img { transform: scale(1.05); }
+
+  /* Scroll animations */
+  .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .d1 { transition-delay: 0.1s; }
+  .d2 { transition-delay: 0.2s; }
+  .d3 { transition-delay: 0.3s; }
+  .d4 { transition-delay: 0.4s; }
+
+  /* WhatsApp float */
+  .wa-float {
+    position: fixed; bottom: 24px; right: 20px; z-index: 9000;
+    background: #25D366; color: #fff;
+    width: 54px; height: 54px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+    transition: transform 0.2s;
+  }
+  .wa-float:hover { transform: scale(1.1); }
+
+  /* Hero image clip */
+  .hero-img-wrap {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+
+  /* Blue CTA strip */
+  .blue-strip { background: linear-gradient(135deg, #1E40AF, #2563EB, #3B82F6); }
+
+  /* Thin divider */
+  .divider { height: 1px; background: var(--border); }
+
+  /* Number big */
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: 2.75rem; color: var(--blue); line-height: 1; }
+
+  /* Hover underline link */
+  .nav-link {
+    font-size: 0.875rem; font-weight: 500; color: var(--text-mid);
+    position: relative; transition: color 0.2s;
+    padding-bottom: 2px;
+  }
+  .nav-link::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+    height: 2px; background: var(--blue);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.25s ease;
+    border-radius: 2px;
+  }
+  .nav-link:hover { color: var(--blue); }
+  .nav-link:hover::after { transform: scaleX(1); }
+
+  /* Section spacing */
+  .section { padding: 80px 0; }
+  @media (min-width: 768px) { .section { padding: 100px 0; } }
+</style>
+</head>
+<body>
+
+<!-- ======= NAVBAR ======= -->
+<nav id="navbar">
+  <div class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between gap-6">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2.5 flex-shrink-0">
+      <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--blue);">
+        <span class="text-white font-bold text-sm">N</span>
+      </div>
+      <div>
+        <div style="font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--text);line-height:1.1;">Neel Infratech</div>
+        <div style="font-size:0.58rem;color:var(--text-muted);letter-spacing:0.08em;">NAGPUR</div>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-7">
+      <a href="#" class="nav-link">Home</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+
+    <!-- CTA + hamburger -->
+    <div class="flex items-center gap-3">
+      <a href="#contact" class="btn-primary hidden sm:inline-flex">
+        <i class="fas fa-calendar-check text-xs"></i> Book Visit
+      </a>
+      <button onclick="toggleMobileNav()" class="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors" id="ham">
+        <i class="fas fa-bars text-slate-600" id="ham-icon"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav -->
+  <div id="mobile-nav" style="background:#fff;border-top:1px solid var(--border);">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex flex-col gap-1">
+      <a href="#" onclick="closeMobileNav()" class="py-2.5 px-3 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50">Home</a>
+      <a href="#projects" onclick="closeMobileNav()" class="py-2.5 px-3 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50">Projects</a>
+      <a href="#about" onclick="closeMobileNav()" class="py-2.5 px-3 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50">About</a>
+      <a href="#contact" onclick="closeMobileNav()" class="py-2.5 px-3 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50">Contact</a>
+      <a href="#contact" onclick="closeMobileNav()" class="btn-primary mt-2 justify-center"><i class="fas fa-calendar-check text-xs"></i> Book a Site Visit</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ======= HERO ======= -->
+<section style="padding-top:96px;background:#fff;">
+  <div class="max-w-7xl mx-auto px-5 py-12 md:py-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+      <!-- Left: Text -->
+      <div>
+        <div class="tag-bar mb-6 fade-up inline-flex">
+          <div class="tag-dot"><i class="fas fa-map-marker-alt text-white text-xs"></i></div>
+          <span class="section-tag">Nagpur's Trusted Real Estate Partner</span>
+        </div>
+
+        <h1 class="display text-4xl md:text-5xl lg:text-6xl font-normal leading-tight mb-5 fade-up d1" style="color:var(--text);">
+          Invest in <em style="color:var(--blue);">Smart</em><br/>Real Estate<br/>Opportunities
+        </h1>
+
+        <p class="text-base md:text-lg leading-relaxed mb-8 fade-up d2" style="color:var(--text-soft);max-width:480px;">
+          Neel Infratech helps you secure your future with trusted and transparent land investments in Nagpur's fastest-growing locations.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-10 fade-up d3">
+          <a href="#projects" class="btn-primary"><i class="fas fa-arrow-right text-xs"></i> View Projects</a>
+          <a href="#contact" class="btn-outline">Contact Us</a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="flex flex-wrap gap-4 fade-up d4">
+          <div class="flex items-center gap-2 text-sm" style="color:var(--text-soft);">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background:var(--green-light);">
+              <i class="fas fa-check text-xs" style="color:var(--green);"></i>
+            </div>
+            NA Approved
+          </div>
+          <div class="flex items-center gap-2 text-sm" style="color:var(--text-soft);">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background:var(--green-light);">
+              <i class="fas fa-check text-xs" style="color:var(--green);"></i>
+            </div>
+            RERA Registered
+          </div>
+          <div class="flex items-center gap-2 text-sm" style="color:var(--text-soft);">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background:var(--green-light);">
+              <i class="fas fa-check text-xs" style="color:var(--green);"></i>
+            </div>
+            100% Transparent
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="hero-img-wrap fade-up d2" style="height:420px;">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200" alt="Premium Real Estate Nagpur" class="w-full h-full object-cover"/>
+        <!-- Float badge -->
+        <div style="position:absolute;bottom:20px;left:20px;background:#fff;border-radius:12px;padding:12px 16px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:10px;">
+          <div style="width:38px;height:38px;background:var(--blue-light);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+            <i class="fas fa-award" style="color:var(--blue);"></i>
+          </div>
+          <div>
+            <div style="font-size:0.75rem;font-weight:700;color:var(--text);">13+ Years</div>
+            <div style="font-size:0.65rem;color:var(--text-muted);">Trusted Experience</div>
+          </div>
+        </div>
+        <div style="position:absolute;top:20px;right:20px;background:#fff;border-radius:10px;padding:10px 14px;box-shadow:var(--shadow-lg);">
+          <div style="display:flex;align-items:center;gap-1;gap:4px;">
+            <i class="fas fa-star text-amber-400 text-xs"></i>
+            <i class="fas fa-star text-amber-400 text-xs"></i>
+            <i class="fas fa-star text-amber-400 text-xs"></i>
+            <i class="fas fa-star text-amber-400 text-xs"></i>
+            <i class="fas fa-star text-amber-400 text-xs"></i>
+          </div>
+          <div style="font-size:0.65rem;color:var(--text-muted);margin-top:3px;">2000+ Happy Clients</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======= TRUST STATS ======= -->
+<section style="background:var(--slate);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid grid-cols-1 sm:grid-cols-3 fade-up" style="divide-y:1px solid var(--border);">
+      <div class="stat-item py-8">
+        <div class="stat-num mb-1" data-target="2000">0+</div>
+        <div class="font-semibold text-sm mb-1" style="color:var(--text);">Happy Clients</div>
+        <div class="text-xs" style="color:var(--text-muted);">Families who trusted Neel Infratech</div>
+      </div>
+      <div class="stat-item py-8">
+        <div class="stat-num mb-1" data-target="13">0+</div>
+        <div class="font-semibold text-sm mb-1" style="color:var(--text);">Years Experience</div>
+        <div class="text-xs" style="color:var(--text-muted);">Delivering quality real estate since 2011</div>
+      </div>
+      <div class="stat-item py-8" style="border-right:none;">
+        <div class="stat-num mb-1" style="color:var(--green);">100%</div>
+        <div class="font-semibold text-sm mb-1" style="color:var(--text);">Transparent Deals</div>
+        <div class="text-xs" style="color:var(--text-muted);">Clear documentation, no hidden costs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PROJECTS ======= -->
+<section id="projects" class="section" style="background:#fff;">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 fade-up">
+      <div>
+        <span class="section-tag block mb-2">Our Portfolio</span>
+        <h2 class="display text-3xl md:text-4xl font-normal" style="color:var(--text);">Landmark <span style="color:var(--blue);">Projects</span></h2>
+        <p class="text-sm mt-2" style="color:var(--text-soft);max-width:420px;">Strategically located developments across Nagpur's fastest-growing corridors.</p>
+      </div>
+      <a href="#contact" class="btn-outline self-start md:self-auto flex-shrink-0">View All Projects</a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Card 1 -->
+      <div class="project-card fade-up">
+        <div style="overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800" alt="Vrindavan Park" loading="lazy"/>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="chip">Plotted Development</span>
+            <span class="chip chip-green"><i class="fas fa-circle text-xs"></i> Available</span>
+          </div>
+          <h3 class="font-bold text-lg mb-1" style="color:var(--text);">Vrindavan Park</h3>
+          <div class="flex items-center gap-1.5 text-xs mb-3" style="color:var(--text-muted);">
+            <i class="fas fa-map-marker-alt" style="color:var(--blue);"></i>
+            Nagpur, Maharashtra
+          </div>
+          <p class="text-sm leading-relaxed mb-5" style="color:var(--text-soft);">A serene, fully planned plotted community with wide roads, greenery, and all modern amenities — ideal for investment and living.</p>
+          <div class="divider mb-4"></div>
+          <div class="flex items-center justify-between">
+            <div class="flex gap-3">
+              <div class="flex items-center gap-1 text-xs" style="color:var(--text-soft);"><i class="fas fa-shield-alt text-xs" style="color:var(--blue);"></i> NA Approved</div>
+              <div class="flex items-center gap-1 text-xs" style="color:var(--text-soft);"><i class="fas fa-road text-xs" style="color:var(--blue);"></i> 60ft Roads</div>
+            </div>
+            <a href="#contact" class="btn-primary" style="padding:8px 16px;font-size:0.78rem;">Enquire →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="project-card fade-up d1">
+        <div style="overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800" alt="Silver Star" loading="lazy"/>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="chip">Premium Layout</span>
+            <span class="chip chip-green"><i class="fas fa-circle text-xs"></i> Available</span>
+          </div>
+          <h3 class="font-bold text-lg mb-1" style="color:var(--text);">Silver Star</h3>
+          <div class="flex items-center gap-1.5 text-xs mb-3" style="color:var(--text-muted);">
+            <i class="fas fa-map-marker-alt" style="color:var(--blue);"></i>
+            Nagpur, Maharashtra
+          </div>
+          <p class="text-sm leading-relaxed mb-5" style="color:var(--text-soft);">Located near Samruddhi Highway, Silver Star offers excellent connectivity and a premium plotted experience with high ROI potential.</p>
+          <div class="divider mb-4"></div>
+          <div class="flex items-center justify-between">
+            <div class="flex gap-3">
+              <div class="flex items-center gap-1 text-xs" style="color:var(--text-soft);"><i class="fas fa-bolt text-xs" style="color:var(--blue);"></i> Electricity</div>
+              <div class="flex items-center gap-1 text-xs" style="color:var(--text-soft);"><i class="fas fa-tint text-xs" style="color:var(--blue);"></i> Water Supply</div>
+            </div>
+            <a href="#contact" class="btn-primary" style="padding:8px 16px;font-size:0.78rem;">Enquire →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="project-card fade-up d2">
+        <div style="overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800" alt="Silver Icon" loading="lazy"/>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="chip">Landmark Township</span>
+            <span class="chip chip-green"><i class="fas fa-circle text-xs"></i> Available</span>
+          </div>
+          <h3 class="font-bold text-lg mb-1" style="color:var(--text);">Silver Icon</h3>
+          <div class="flex items-center gap-1.5 text-xs mb-3" style="color:var(--text-muted);">
+            <i class="fas fa-map-marker-alt" style="color:var(--blue);"></i>
+            Nagpur, Maharashtra
+          </div>
+          <p class="text-sm leading-relaxed mb-5" style="color:var(--text-soft);">Silver Icon is a landmark township near MIHAN, offering RERA-registered plots with world-class amenities and long-term value.</p>
+          <div class="divider mb-4"></div>
+          <div class="flex items-center justify-between">
+            <div class="flex gap-3">
+              <div class="flex items-center gap-1 text-xs" style="color:var(--text-soft);"><i class="fas fa-certificate text-xs" style="color:var(--blue);"></i> RERA</div>
+              <div class="flex items-center gap-1 text-xs" style="color:var(--text-soft);"><i class="fas fa-home text-xs" style="color:var(--blue);"></i> Club House</div>
+            </div>
+            <a href="#contact" class="btn-primary" style="padding:8px 16px;font-size:0.78rem;">Enquire →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======= WHY CHOOSE US ======= -->
+<section class="section" style="background:var(--slate);">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-12 fade-up">
+      <span class="section-tag block mb-2">The Neel Advantage</span>
+      <h2 class="display text-3xl md:text-4xl font-normal" style="color:var(--text);">Why Choose <span style="color:var(--blue);">Neel Infratech</span></h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="why-card fade-up">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:var(--blue-light);">
+          <i class="fas fa-shield-alt" style="color:var(--blue);"></i>
+        </div>
+        <h3 class="font-bold text-base mb-2" style="color:var(--text);">Transparent Pricing</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-soft);">No hidden costs. Clear pricing with full documentation at every stage of the transaction.</p>
+      </div>
+      <div class="why-card fade-up d1">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:var(--blue-light);">
+          <i class="fas fa-handshake" style="color:var(--blue);"></i>
+        </div>
+        <h3 class="font-bold text-base mb-2" style="color:var(--text);">Trusted Brand</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-soft);">13+ years of delivering on promises. Over 2000 satisfied families across Nagpur.</p>
+      </div>
+      <div class="why-card fade-up d2">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:var(--blue-light);">
+          <i class="fas fa-chart-line" style="color:var(--blue);"></i>
+        </div>
+        <h3 class="font-bold text-base mb-2" style="color:var(--text);">High ROI Locations</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-soft);">Strategically selected sites near highways, metro corridors, and growth zones.</p>
+      </div>
+      <div class="why-card fade-up d3">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:var(--blue-light);">
+          <i class="fas fa-user-tie" style="color:var(--blue);"></i>
+        </div>
+        <h3 class="font-bold text-base mb-2" style="color:var(--text);">Expert Guidance</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--text-soft);">Dedicated advisors guide you from site visit to registration, every step of the way.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= AMENITIES ======= -->
+<section class="section" style="background:#fff;">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-12 fade-up">
+      <span class="section-tag block mb-2">Community Amenities</span>
+      <h2 class="display text-3xl md:text-4xl font-normal" style="color:var(--text);">Everything You <span style="color:var(--blue);">Need</span></h2>
+      <p class="text-sm mt-3 mx-auto" style="color:var(--text-soft);max-width:420px;">Every project is designed with a complete lifestyle ecosystem — not just plots, but communities.</p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div class="amenity-card fade-up">
+        <div class="amenity-icon"><i class="fas fa-building"></i></div>
+        <div class="font-semibold text-sm mb-1" style="color:var(--text);">Clubhouse</div>
+        <div class="text-xs" style="color:var(--text-muted);">Leisure & Events</div>
+      </div>
+      <div class="amenity-card fade-up d1">
+        <div class="amenity-icon"><i class="fas fa-leaf"></i></div>
+        <div class="font-semibold text-sm mb-1" style="color:var(--text);">Lush Gardens</div>
+        <div class="text-xs" style="color:var(--text-muted);">Green Landscaping</div>
+      </div>
+      <div class="amenity-card fade-up d2">
+        <div class="amenity-icon"><i class="fas fa-child"></i></div>
+        <div class="font-semibold text-sm mb-1" style="color:var(--text);">Kids Play Area</div>
+        <div class="text-xs" style="color:var(--text-muted);">Safe & Fun Zone</div>
+      </div>
+      <div class="amenity-card fade-up d3">
+        <div class="amenity-icon"><i class="fas fa-walking"></i></div>
+        <div class="font-semibold text-sm mb-1" style="color:var(--text);">Walking Track</div>
+        <div class="text-xs" style="color:var(--text-muted);">Wellness Pathway</div>
+      </div>
+      <div class="amenity-card fade-up d4 col-span-2 sm:col-span-1">
+        <div class="amenity-icon"><i class="fas fa-road"></i></div>
+        <div class="font-semibold text-sm mb-1" style="color:var(--text);">Cement Roads</div>
+        <div class="text-xs" style="color:var(--text-muted);">60ft Wide Layout</div>
+      </div>
+    </div>
+
+    <!-- Feature strip below -->
+    <div class="mt-8 rounded-2xl p-6 grid grid-cols-2 md:grid-cols-4 gap-5 fade-up" style="background:var(--blue-light);border:1px solid var(--blue-mid);">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#fff;">
+          <i class="fas fa-bolt text-sm" style="color:var(--blue);"></i>
+        </div>
+        <div class="text-sm font-medium" style="color:var(--text);">24hr Electricity</div>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#fff;">
+          <i class="fas fa-tint text-sm" style="color:var(--blue);"></i>
+        </div>
+        <div class="text-sm font-medium" style="color:var(--text);">Water Supply</div>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#fff;">
+          <i class="fas fa-lock text-sm" style="color:var(--blue);"></i>
+        </div>
+        <div class="text-sm font-medium" style="color:var(--text);">Gated Security</div>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#fff;">
+          <i class="fas fa-street-view text-sm" style="color:var(--blue);"></i>
+        </div>
+        <div class="text-sm font-medium" style="color:var(--text);">Street Lighting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= LOCATION ADVANTAGE ======= -->
+<section class="section" style="background:var(--slate);">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+      <!-- Left: Map visual -->
+      <div class="rounded-2xl overflow-hidden border fade-up" style="border-color:var(--border);box-shadow:var(--shadow-lg);height:380px;background:#EFF6FF;position:relative;">
+        <!-- SVG map visualization -->
+        <svg viewBox="0 0 480 380" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <rect width="480" height="380" fill="#EFF6FF"/>
+          <!-- Grid -->
+          <defs>
+            <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#BFDBFE" stroke-width="0.8"/>
+            </pattern>
+          </defs>
+          <rect width="480" height="380" fill="url(#grid2)"/>
+          <!-- Roads -->
+          <line x1="0" y1="190" x2="480" y2="190" stroke="#93C5FD" stroke-width="5" stroke-linecap="round"/>
+          <line x1="240" y1="0" x2="240" y2="380" stroke="#BFDBFE" stroke-width="3"/>
+          <line x1="0" y1="100" x2="480" y2="270" stroke="#BFDBFE" stroke-width="2" stroke-dasharray="8,6"/>
+          <!-- Center: Neel location -->
+          <circle cx="240" cy="190" r="30" fill="#DBEAFE" stroke="#2563EB" stroke-width="2"/>
+          <circle cx="240" cy="190" r="12" fill="#2563EB"/>
+          <text x="256" y="174" fill="#1D4ED8" font-size="11" font-family="Plus Jakarta Sans" font-weight="700">Neel Projects</text>
+          <!-- Other nodes -->
+          <circle cx="80" cy="100" r="8" fill="#3B82F6" opacity="0.8"/>
+          <text x="56" y="88" fill="#1D4ED8" font-size="9" font-family="Plus Jakarta Sans" font-weight="600">MIHAN</text>
+          <circle cx="400" cy="210" r="8" fill="#3B82F6" opacity="0.8"/>
+          <text x="370" y="198" fill="#1D4ED8" font-size="9" font-family="Plus Jakarta Sans" font-weight="600">Samruddhi Hwy</text>
+          <circle cx="160" cy="290" r="8" fill="#22C55E" opacity="0.8"/>
+          <text x="132" y="306" fill="#16A34A" font-size="9" font-family="Plus Jakarta Sans" font-weight="600">Metro Station</text>
+          <circle cx="360" cy="80" r="8" fill="#22C55E" opacity="0.8"/>
+          <text x="330" y="68" fill="#16A34A" font-size="9" font-family="Plus Jakarta Sans" font-weight="600">Schools</text>
+          <!-- Connectors -->
+          <line x1="240" y1="190" x2="80" y2="100" stroke="#93C5FD" stroke-width="1.5" stroke-dasharray="5,4"/>
+          <line x1="240" y1="190" x2="400" y2="210" stroke="#93C5FD" stroke-width="1.5" stroke-dasharray="5,4"/>
+          <line x1="240" y1="190" x2="160" y2="290" stroke="#93C5FD" stroke-width="1.5" stroke-dasharray="5,4"/>
+          <line x1="240" y1="190" x2="360" y2="80" stroke="#93C5FD" stroke-width="1.5" stroke-dasharray="5,4"/>
+        </svg>
+        <!-- Caption -->
+        <div style="position:absolute;bottom:16px;left:16px;right:16px;background:rgba(255,255,255,0.9);backdrop-filter:blur(8px);border-radius:10px;padding:10px 14px;font-size:0.72rem;color:var(--text-soft);text-align:center;">
+          Strategic location map · Nagpur, Maharashtra
+        </div>
+      </div>
+
+      <!-- Right: Points -->
+      <div class="fade-up d1">
+        <span class="section-tag block mb-2">Strategic Location</span>
+        <h2 class="display text-3xl md:text-4xl font-normal mb-4" style="color:var(--text);">Connected to <span style="color:var(--blue);">Everything</span></h2>
+        <p class="text-sm leading-relaxed mb-7" style="color:var(--text-soft);">Our projects sit at Nagpur's most promising growth intersections — making every investment strategically sound.</p>
+
+        <div class="flex flex-col gap-3">
+          <div class="loc-item">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--blue-light);">
+              <i class="fas fa-road text-sm" style="color:var(--blue);"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-sm" style="color:var(--text);">Samruddhi Highway</div>
+              <div class="text-xs mt-0.5" style="color:var(--text-muted);">Direct link to Mumbai-Pune expressway network</div>
+            </div>
+          </div>
+          <div class="loc-item">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--blue-light);">
+              <i class="fas fa-plane text-sm" style="color:var(--blue);"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-sm" style="color:var(--text);">Close to MIHAN SEZ</div>
+              <div class="text-xs mt-0.5" style="color:var(--text-muted);">Asia's largest multi-modal international hub nearby</div>
+            </div>
+          </div>
+          <div class="loc-item">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--green-light);">
+              <i class="fas fa-train text-sm" style="color:var(--green);"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-sm" style="color:var(--text);">Metro Connectivity</div>
+              <div class="text-xs mt-0.5" style="color:var(--text-muted);">Proximity to Nagpur Metro Phase 2 expansion corridor</div>
+            </div>
+          </div>
+          <div class="loc-item">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--green-light);">
+              <i class="fas fa-graduation-cap text-sm" style="color:var(--green);"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-sm" style="color:var(--text);">Schools & Hospitals Nearby</div>
+              <div class="text-xs mt-0.5" style="color:var(--text-muted);">Premium institutions within comfortable daily reach</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= LEADERSHIP ======= -->
+<section id="about" class="section" style="background:#fff;">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+      <!-- Image -->
+      <div class="relative fade-up">
+        <div class="rounded-2xl overflow-hidden border" style="height:440px;border-color:var(--border);box-shadow:var(--shadow-lg);">
+          <img src="/images/director-image.png" alt="Mr. Pitambar Ikhar" class="w-full h-full object-cover object-top"/>
+        </div>
+        <!-- Floating card -->
+        <div style="position:absolute;bottom:24px;right:-12px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow-lg);max-width:200px;">
+          <div class="text-xs font-semibold mb-1" style="color:var(--text);">Mr. Pitambar Ikhar</div>
+          <div class="text-xs" style="color:var(--text-muted);">Founder & CEO</div>
+          <div class="text-xs mt-2 font-semibold" style="color:var(--blue);">Neel Infratech</div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="fade-up d2">
+        <span class="section-tag block mb-2">Founder & CEO</span>
+        <h2 class="display text-3xl md:text-4xl font-normal mb-1" style="color:var(--text);">Mr. Pitambar <span style="color:var(--blue);">Ikhar</span></h2>
+        <p class="text-sm mb-6" style="color:var(--text-muted);">Founder & Chief Executive Officer · Neel Infratech</p>
+
+        <div class="divider mb-6"></div>
+
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--text-soft);">Mr. Pitambar Ikhar is a visionary leader driving Neel Infratech with a mission to transform land into long-term value. With deep expertise in real estate and a commitment to transparency, he has built trust among hundreds of investors across Nagpur.</p>
+
+        <p class="text-sm leading-relaxed mb-7" style="color:var(--text-soft);">His belief that every family deserves access to quality land — at fair pricing, with complete documentation — has shaped every project Neel Infratech has delivered since its founding.</p>
+
+        <!-- Quote -->
+        <div class="rounded-xl p-5 mb-7" style="background:var(--blue-light);border:1px solid var(--blue-mid);">
+          <i class="fas fa-quote-left text-lg mb-2" style="color:var(--blue);opacity:0.5;display:block;"></i>
+          <p class="text-sm font-semibold italic leading-relaxed" style="color:var(--blue-dark);">"We don't just sell land — we build futures."</p>
+        </div>
+
+        <!-- Stats row -->
+        <div class="grid grid-cols-3 gap-4 text-center">
+          <div class="rounded-xl p-4" style="background:var(--slate);border:1px solid var(--border);">
+            <div class="display text-2xl font-normal" style="color:var(--blue);">13+</div>
+            <div class="text-xs mt-1" style="color:var(--text-muted);">Years</div>
+          </div>
+          <div class="rounded-xl p-4" style="background:var(--slate);border:1px solid var(--border);">
+            <div class="display text-2xl font-normal" style="color:var(--blue);">2000+</div>
+            <div class="text-xs mt-1" style="color:var(--text-muted);">Clients</div>
+          </div>
+          <div class="rounded-xl p-4" style="background:var(--slate);border:1px solid var(--border);">
+            <div class="display text-2xl font-normal" style="color:var(--green);">100%</div>
+            <div class="text-xs mt-1" style="color:var(--text-muted);">Transparent</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= DIRECTORS ======= -->
+<section class="section" style="background:var(--slate);">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-12 fade-up">
+      <span class="section-tag block mb-2">Leadership Team</span>
+      <h2 class="display text-3xl md:text-4xl font-normal" style="color:var(--text);">Meet Our <span style="color:var(--blue);">Directors</span></h2>
+      <p class="text-sm mt-3 mx-auto" style="color:var(--text-soft);max-width:400px;">A team of dedicated professionals united by a shared vision of building Nagpur's most trusted real estate brand.</p>
+    </div>
+
+    <!-- Row 1: 2 centered -->
+    <div class="flex flex-col gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto w-full">
+        <div class="director-card fade-up">
+          <div style="overflow:hidden;height:220px;">
+            <img src="/images/AjayDandekar.png" alt="Ajay Dandekar"/>
+          </div>
+          <div class="p-4">
+            <div class="font-bold text-base mb-0.5" style="color:var(--text);">Ajay Dandekar</div>
+            <div class="text-xs font-semibold mb-1" style="color:var(--blue);">Director, Neel Infratech</div>
+            <p class="text-xs italic" style="color:var(--text-muted);">"Building value through integrity and vision."</p>
+          </div>
+        </div>
+        <div class="director-card fade-up d1">
+          <div style="overflow:hidden;height:220px;">
+            <img src="/images/Dekate.png" alt="Prashant Dekate"/>
+          </div>
+          <div class="p-4">
+            <div class="font-bold text-base mb-0.5" style="color:var(--text);">Prashant Dekate</div>
+            <div class="text-xs font-semibold mb-1" style="color:var(--blue);">Director, Neel Infratech</div>
+            <p class="text-xs italic" style="color:var(--text-muted);">"Every plot tells a story of growth and trust."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: 3 cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="director-card fade-up">
+          <div style="overflow:hidden;height:220px;">
+            <img src="/images/Pushparaj.png" alt="Pushparaj Meshram"/>
+          </div>
+          <div class="p-4">
+            <div class="font-bold text-base mb-0.5" style="color:var(--text);">Pushparaj Meshram</div>
+            <div class="text-xs font-semibold mb-1" style="color:var(--blue);">Director, Neel Infratech</div>
+            <p class="text-xs italic" style="color:var(--text-muted);">"Delivering excellence one plot at a time."</p>
+          </div>
+        </div>
+        <div class="director-card fade-up d1">
+          <div style="overflow:hidden;height:220px;">
+            <img src="/images/Rupesh.png" alt="Rupesh"/>
+          </div>
+          <div class="p-4">
+            <div class="font-bold text-base mb-0.5" style="color:var(--text);">Rupesh</div>
+            <div class="text-xs font-semibold mb-1" style="color:var(--blue);">Director, Neel Infratech</div>
+            <p class="text-xs italic" style="color:var(--text-muted);">"Land is legacy — we help you build yours."</p>
+          </div>
+        </div>
+        <div class="director-card fade-up d2">
+          <div style="overflow:hidden;height:220px;">
+            <img src="/images/SatendraChaudhary.png" alt="Satendra Chaudhary"/>
+          </div>
+          <div class="p-4">
+            <div class="font-bold text-base mb-0.5" style="color:var(--text);">Satendra Chaudhary</div>
+            <div class="text-xs font-semibold mb-1" style="color:var(--blue);">Director, Neel Infratech</div>
+            <p class="text-xs italic" style="color:var(--text-muted);">"Smart investments begin with trusted guidance."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= GALLERY ======= -->
+<section class="section" style="background:#fff;">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-10 fade-up">
+      <span class="section-tag block mb-2">Visual Portfolio</span>
+      <h2 class="display text-3xl md:text-4xl font-normal" style="color:var(--text);">Project <span style="color:var(--blue);">Gallery</span></h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 fade-up">
+      <div class="gallery-item" style="height:220px;">
+        <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=800" alt="Gallery" loading="lazy"/>
+      </div>
+      <div class="gallery-item" style="height:220px;">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Gallery" loading="lazy"/>
+      </div>
+      <div class="gallery-item" style="height:220px;">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800" alt="Gallery" loading="lazy"/>
+      </div>
+      <div class="gallery-item col-span-2" style="height:200px;">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200" alt="Gallery" loading="lazy" style="width:100%;height:100%;object-fit:cover;"/>
+      </div>
+      <div class="gallery-item" style="height:200px;">
+        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800" alt="Gallery" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= TESTIMONIALS ======= -->
+<section class="section" style="background:var(--slate);">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-12 fade-up">
+      <span class="section-tag block mb-2">Client Stories</span>
+      <h2 class="display text-3xl md:text-4xl font-normal" style="color:var(--text);">What Clients <span style="color:var(--blue);">Say</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="testimonial-card fade-up">
+        <div class="flex gap-1 mb-4">
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+        </div>
+        <p class="text-sm leading-relaxed mb-5 italic" style="color:var(--text-soft);">"Neel Infratech made the entire buying process seamless and transparent. My plot at Vrindavan Park has already appreciated 40% in two years."</p>
+        <div class="divider mb-4"></div>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm text-white" style="background:var(--blue);">P</div>
+          <div>
+            <div class="font-semibold text-sm" style="color:var(--text);">Priya Kulkarni</div>
+            <div class="text-xs" style="color:var(--text-muted);">Investor · Vrindavan Park</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up d1">
+        <div class="flex gap-1 mb-4">
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+        </div>
+        <p class="text-sm leading-relaxed mb-5 italic" style="color:var(--text-soft);">"The team guided us at every step. From site visit to registration, everything was handled with professionalism. Truly world-class service."</p>
+        <div class="divider mb-4"></div>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm text-white" style="background:var(--green);">S</div>
+          <div>
+            <div class="font-semibold text-sm" style="color:var(--text);">Suresh Nair</div>
+            <div class="text-xs" style="color:var(--text-muted);">Homebuyer · Silver Star</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up d2">
+        <div class="flex gap-1 mb-4">
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+        </div>
+        <p class="text-sm leading-relaxed mb-5 italic" style="color:var(--text-soft);">"Best investment I've made. Silver Icon's location near MIHAN is exceptional. The transparency and documentation process was impeccable."</p>
+        <div class="divider mb-4"></div>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm text-white" style="background:#7C3AED;">A</div>
+          <div>
+            <div class="font-semibold text-sm" style="color:var(--text);">Anita Bhatt</div>
+            <div class="text-xs" style="color:var(--text-muted);">Investor · Silver Icon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CTA STRIP ======= -->
+<section class="blue-strip py-16">
+  <div class="max-w-4xl mx-auto px-5 text-center fade-up">
+    <h2 class="display text-3xl md:text-5xl font-normal text-white mb-4">Ready to Invest in <em>Your Future?</em></h2>
+    <p class="text-blue-100 text-sm md:text-base mb-8 max-w-lg mx-auto">Limited plots available. Book a free site visit today and talk to our expert advisors.</p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="#contact" class="btn-white">Book a Site Visit</a>
+      <a href="tel:+917890000000" class="btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+        <i class="fas fa-phone-alt text-xs"></i> Call Now
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CONTACT ======= -->
+<section id="contact" class="section" style="background:#fff;">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+
+      <!-- Left info -->
+      <div class="fade-up">
+        <span class="section-tag block mb-2">Get in Touch</span>
+        <h2 class="display text-3xl md:text-4xl font-normal mb-4" style="color:var(--text);">Let's Find Your <span style="color:var(--blue);">Perfect Plot</span></h2>
+        <p class="text-sm leading-relaxed mb-8" style="color:var(--text-soft);max-width:380px;">Our property advisors are ready to guide you through site visits, documentation, and investment planning.</p>
+
+        <div class="flex flex-col gap-3">
+          <a href="tel:+917890000000" class="loc-item">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:var(--blue-light);">
+              <i class="fas fa-phone" style="color:var(--blue);font-size:0.85rem;"></i>
+            </div>
+            <div>
+              <div class="text-xs mb-0.5" style="color:var(--text-muted);">Call Us</div>
+              <div class="font-semibold text-sm" style="color:var(--text);">+91 78900 00000</div>
+            </div>
+          </a>
+          <a href="https://wa.me/917890000000" class="loc-item">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:var(--green-light);">
+              <i class="fab fa-whatsapp" style="color:var(--green);font-size:1rem;"></i>
+            </div>
+            <div>
+              <div class="text-xs mb-0.5" style="color:var(--text-muted);">WhatsApp</div>
+              <div class="font-semibold text-sm" style="color:var(--text);">Chat with an Advisor</div>
+            </div>
+          </a>
+          <div class="loc-item">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:var(--blue-light);">
+              <i class="fas fa-map-marker-alt" style="color:var(--blue);font-size:0.85rem;"></i>
+            </div>
+            <div>
+              <div class="text-xs mb-0.5" style="color:var(--text-muted);">Office</div>
+              <div class="font-semibold text-sm" style="color:var(--text);">Nagpur, Maharashtra</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact form -->
+      <div class="rounded-2xl p-6 md:p-8 fade-up d1" style="border:1.5px solid var(--border);background:#fff;box-shadow:var(--shadow);">
+        <h3 class="font-bold text-lg mb-1" style="color:var(--text);">Book a Site Visit</h3>
+        <p class="text-xs mb-6" style="color:var(--text-muted);">We respond within 24 hours</p>
+
+        <div class="flex flex-col gap-4">
+          <div>
+            <label class="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style="color:var(--text-mid);">Full Name *</label>
+            <input type="text" placeholder="Your full name" class="form-input"/>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style="color:var(--text-mid);">Phone Number *</label>
+            <input type="tel" placeholder="+91 your number" class="form-input"/>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style="color:var(--text-mid);">Email</label>
+            <input type="email" placeholder="your@email.com" class="form-input"/>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style="color:var(--text-mid);">Interested In</label>
+            <select class="form-input">
+              <option>Vrindavan Park</option>
+              <option>Silver Star</option>
+              <option>Silver Icon</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style="color:var(--text-mid);">Message</label>
+            <textarea rows="3" placeholder="Tell us about your requirements..." class="form-input" style="resize:none;"></textarea>
+          </div>
+          <button onclick="handleSubmit(this)" class="btn-primary w-full justify-center mt-1" style="padding:14px 24px;">
+            <i class="fas fa-paper-plane text-xs"></i> Submit Inquiry
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer style="background:var(--text);color:#94A3B8;">
+  <div class="max-w-7xl mx-auto px-5 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+      <!-- Brand -->
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--blue);">
+            <span class="text-white font-bold text-sm">N</span>
+          </div>
+          <div>
+            <div style="font-family:'DM Serif Display',serif;font-size:1.05rem;color:#fff;line-height:1.1;">Neel Infratech</div>
+            <div style="font-size:0.58rem;color:#64748B;letter-spacing:0.08em;">NAGPUR, MAHARASHTRA</div>
+          </div>
+        </div>
+        <p class="text-xs leading-relaxed mb-5" style="color:#64748B;max-width:280px;">Turning land into landmarks since 2011. Premium plotted developments across Nagpur's fastest-growing corridors.</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:bg-blue-600" style="background:#1E293B;">
+            <i class="fab fa-facebook-f text-xs text-white"></i>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:bg-pink-600" style="background:#1E293B;">
+            <i class="fab fa-instagram text-xs text-white"></i>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:bg-red-600" style="background:#1E293B;">
+            <i class="fab fa-youtube text-xs text-white"></i>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:bg-blue-700" style="background:#1E293B;">
+            <i class="fab fa-linkedin-in text-xs text-white"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div>
+        <h4 class="text-white text-xs font-bold mb-4 uppercase tracking-widest">Projects</h4>
+        <div class="flex flex-col gap-2">
+          <a href="#projects" class="text-xs hover:text-white transition-colors">Vrindavan Park</a>
+          <a href="#projects" class="text-xs hover:text-white transition-colors">Silver Star</a>
+          <a href="#projects" class="text-xs hover:text-white transition-colors">Silver Icon</a>
+        </div>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 class="text-white text-xs font-bold mb-4 uppercase tracking-widest">Company</h4>
+        <div class="flex flex-col gap-2">
+          <a href="#about" class="text-xs hover:text-white transition-colors">About Us</a>
+          <a href="#" class="text-xs hover:text-white transition-colors">Amenities</a>
+          <a href="#contact" class="text-xs hover:text-white transition-colors">Contact</a>
+          <a href="#" class="text-xs hover:text-white transition-colors">RERA Info</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:1px;background:#1E293B;margin-bottom:20px;"></div>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+      <p class="text-xs" style="color:#475569;">© 2024 Neel Infratech. All Rights Reserved. | RERA Registered | NA Approved</p>
+      <p class="text-xs" style="color:#475569;">Nagpur, Maharashtra, India</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp float -->
+<a href="https://wa.me/917890000000" class="wa-float" target="_blank" rel="noopener" title="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- ======= SCRIPTS ======= -->
+<script>
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Mobile nav
+function toggleMobileNav() {
+  const nav = document.getElementById('mobile-nav');
+  const icon = document.getElementById('ham-icon');
+  nav.classList.toggle('open');
+  icon.className = nav.classList.contains('open') ? 'fas fa-times text-slate-600' : 'fas fa-bars text-slate-600';
+}
+function closeMobileNav() {
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.getElementById('ham-icon').className = 'fas fa-bars text-slate-600';
+}
+
+// Scroll fade-up
+const fades = document.querySelectorAll('.fade-up');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+fades.forEach(el => io.observe(el));
+
+// Counter animation
+function animCount(el, target, dur = 1800) {
+  let start = null;
+  const step = ts => {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const val = Math.floor(eased * target);
+    el.textContent = (target >= 100 ? val.toLocaleString() : val) + '+';
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+const cio = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animCount(e.target, parseInt(e.target.dataset.target));
+      cio.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => cio.observe(el));
+
+// Form submit
+function handleSubmit(btn) {
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin text-xs"></i> Sending...';
+  setTimeout(() => {
+    btn.innerHTML = '<i class="fas fa-check text-xs"></i> Inquiry Sent! We\'ll call you soon.';
+    btn.style.background = 'var(--green)';
+    btn.style.borderColor = 'var(--green)';
+  }, 1600);
+}
+</script>
+</body>
+</html>
